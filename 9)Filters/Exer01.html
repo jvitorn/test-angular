@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--Exercicio 06-->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body ng-app="exerModule">
+<h1>Scopes</h1>
+		<p>Mostando as informações dentro do root</p>
+		<p>Mostando A cor do root {{cor}} , mostrando nome {{nome}}</p>
+	<!--Criando -->
+	<div ng-controller="exerController">
+		<p>Mostando as informações dentro do controller</p>
+		<p>Mostando A cor do root {{cor}} , mostrando nome {{nome}}</p>
+	</div>
+	<div ng-controller="outroController">
+		<p>Mostando as informações dentro do root</p>
+		<p>Mostando A cor do root {{cor}}, mostrando nome {{nome}}</p>
+	</div>
+</body>
+<script>
+	var app = angular.module('exerModule',[]);
+	app.run(function($rootScope){
+		$rootScope.nome = "Jhonatan";
+		$rootScope.cor = "Azul";
+	});
+	app.controller('exerController',function($scope){
+		$scope.cor = "vermelho";
+		$scope.nome = "joao";
+	});
+	app.controller('outroController',function($scope){
+		$scope.cor = "verde";
+	});
+</script>
+</html>

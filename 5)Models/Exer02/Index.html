@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<h1>Forms Validation</h1>
+	<!--Criando Uma Multiplicação-->
+	<form ng-app="" name="meuformulario">	
+		<p>Digite Seu Email:<input type="email" name="meuEndereco" ng-model="text"/></p>
+		<span ng-show="meuformulario.meuEndereco.$error.email">Not a valid e-mail</span>
+	</form>
+</body>
+<script>
+</script>
+</html>

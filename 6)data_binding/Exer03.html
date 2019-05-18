@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--Exercicio 06-->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<h1>Data_binding</h1>
+	<!--Criando -->
+	<div ng-app="Modulo" ng-controller="Controllador" >
+		<!--Mostrando Resultados-->
+		Mude o Texto <input ng-model="nome"/>
+		<h1>{{nome}}</h1>
+	</div>
+</body>
+<script>
+var app = angular.module('Modulo',[]);
+app.controller('Controllador',function($scope){
+	$scope.nome = "João";
+	$scope.sobrenome = "Vitor";
+})
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--Exercicio 06-->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<h1>Data_binding</h1>
+	<!--Criando -->
+	<div ng-app="Modulo" ng-controller="arrayControlador" >
+		<!--Mostrando Resultados-->
+		<ul>
+			<li ng-repeat="x in names">
+				{{ x.nome + ',' + x.cidade }}
+			</li>
+		</ul>
+	</div>
+</body>
+<script src="nomecontroller.js"></script>
+</html>

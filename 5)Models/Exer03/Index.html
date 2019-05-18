@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<!--angularjs-->
+-
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<h1>Forms Validation</h1>
+	<!--Criando Uma Validaçao-->
+	<form ng-app="" name="formulario" ng-init="Texto ='Joao@joao.com'">
+		<p>Digite o Email:<input type="email" name="ValidadeEmail" ng-model="Texto" required /></p>
+		<p>Edite Seu Endereço de Email.Ou tente Fazer Uma Alteração</p>
+		<!--se o formulario for verdade entao mostre formulario valido-->
+		<p>Validação:<b>{{formulario.ValidadeEmail.$valid ==  true ? 'formulario valido':'formulario invalido'}}</b></p>
+		<p>Alteração:<b>{{formulario.ValidadeEmail.$dirty ==  true ? 'formulario alterado':'formulario normal'}}</b></p>
+	</form>
+</body>
+<script>
+</script>
+</html>

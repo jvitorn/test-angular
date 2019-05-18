@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Bootstrap Com AngularJS</title>  
+  </head>
+<body>
+  <div class="container" ng-app="modulo" ng-controller="controlador">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Começando Com Bootstrap e AngularJS</h1>
+      </div>
+    </div>
+    <!--Pegando Informações-->
+    <div class="row">
+      <div class="col-md-12" >
+        <!--Formulário de informações-->
+        <form>
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-center">Formúlario</h3>
+              <!--Nome-->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Digite Seu Nome:</span>
+                </div>
+                <input type="text" class="form-control" ng-model="nome"/>
+              </div>
+              <!--/Nome-->
+              <!--Email-->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Digite Seu Email:</span>
+                </div>
+                <input type="email" class="form-control" ng-model="email"/>
+              </div>
+              <!--/Email-->
+              <!--Senha-->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Digite Sua Senha:</span>
+                </div>
+                <input type="password" class="form-control" ng-model="senha"/>
+              </div>
+              <!--/Senha-->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--Mostrando Informações-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <h6 class="text-center">Mostrando Informações</h6>
+            <!--Mostrando Nome-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Seu Nome é:</span>
+              </div>
+              <input type="text" class="form-control" ng-model="nome" readonly/>
+            </div>
+            <!--/Mostrando Nome-->
+            <!--Mostrando Email-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Seu Email é:</span>
+              </div>
+              <input type="text" class="form-control" ng-model="email" readonly>
+            </div>
+            <!--/Mostrando Email-->
+            <!--Mostrando Senha-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Seu Email é:</span>
+              </div>
+              <input type="text" class="form-control" ng-model="senha" readonly>
+            </div>
+            <!--/Mostrando Senha-->
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  var app = angular.module('modulo',[]);
+    app.controller('controlador',function($scope){
+      $scope.nome    = "seu nome aparece aqui";
+      $scope.email   = "digite seu email";
+    });
+  </script>
+</body>
+<footer>
+</footer>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--Exercicio 06-->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<!--Bootstrap 4-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body ng-app="exerModule">
+	<div class="container">
+		<h1 class="text-center">Http Services</h1>
+		<!--Criando -->
+		<div class="row">
+			<div class="col-12" ng-controller="linkController">
+			<input type="text" ng-init="teste"/>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var app = angular.module('exerModule',[]);
+	app.controller('linkController',function($http){
+		$http({
+			url:'enviardados.php',
+			method:"POST",
+			data:
+				{
+            		email:'joao@joao.com',
+            		password: '1234'
+				},
+        	headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		
+		}).then(function(response){
+			console.log(response)
+		},
+		function(response){
+			console.log('poxa que pena ...falhou');
+		});
+		/*var data = {
+			'user' : 'joao'
+		};
+		$http.post('enviardados.php', (data)).then(function (response) {
+			console.log(response.data)
+		});*/
+	});
+</script>
+</html>

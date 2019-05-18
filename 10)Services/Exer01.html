@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--Exercicio 06-->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<!--Bootstrap 4-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body ng-app="exerModule">
+	<div class="container">
+		<h1 class="text-center">Services</h1>
+		<!--Criando -->
+		<div class="row">
+			<div class="col-12" ng-controller="linkController">
+				<h6 class="text-center">Mostando o link de url {{mostrandoUrl}}</h6>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var app = angular.module('exerModule',[]);
+	app.controller('linkController',function($scope,$location){
+		$scope.mostrandoUrl = $location.absUrl();
+	});
+</script>
+</html>

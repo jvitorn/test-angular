@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--Exercicio 03-->
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<!--Bootstrap 4-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--jquery to show js in boots4-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Hello...</title>
+<style type="text/css">
+
+</style>
+</head>
+<!--Modulo 'exerModule'-->
+<body ng-app="exerModule">
+	<div class="container">
+		<h1 class="text-center">Http Services</h1>
+		<!--Criando -->
+		<div class="row">
+			<div class="col-12 col-md-12" ng-controller="linkController">
+				<h6 class="text-center">Mostando o Informações do Banco de Dados(Produtos)</h6>
+				<div class="form-group">
+					<!--Guardando o que o usuario digite no ng-model='buscar'-->
+					<input  class="form-control text-center" type="text" ng-model="buscar" placeholder="Filtre Suas Informações"/>
+				</div>
+				<table class="table table-bordered table-hover">
+					<thead >
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nome</th>
+							<th scope="col">User</th>
+							<th scope="col">Codigo</th>
+							<th scope="col">Informação</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--filtrando informações pelo ng-model='buscar'-->
+						<tr ng-repeat="x in produtos | filter:buscar">
+								<!--Contador de Registros-->
+								<th scope="row">{{$index +1}}</th>
+								<!--Mostando o paramedro de nome do produto-->
+								<td>{{x.NM_PRODUTO}}</td>
+								<!--Mostando o paramedro de id do usuario-->
+								<td>{{x.ID_USUARIO}}</td>
+								<!--Mostando o paramedro de codigo de barras-->
+								<td>{{x.CD_BARRAS}}</td>
+								<td>
+									<!--Chamando varios parametros e iniciando a função 'FuncMostrar' junto ao modal-->
+									<button type="button" produto="{{x.NM_PRODUTO}}" usuario="{{x.ID_USUARIO}}" custo="{{x.VL_CUSTO}}" estoque="{{x.QT_ESTOQUE}}" max-estoque="{{x.QT_ESTOQUE_MAX}}" ng-click="FuncMostrar($event)" data-toggle="modal" data-target="#myModal" class="mostrar btn btn-outline-success btn-sm">
+										Mostrar
+									</button>
+								</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- The Modal -->
+	  <div class="modal fade" id="myModal">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <!-- Modal Header -->
+	        <div class="modal-header">
+	          <h4 class="modal-title">Mostrando Informações</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        
+	        <!-- Modal body -->
+	        <div class="modal-body">
+	        	<div class="list-group">
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Nome Do Produto</h5>
+				    </div>
+				    <p class="mb-1">{{produto}}</p><!--Mostrando o nome do produto no banco de dados-->
+				  </a>
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Valor Do Custo</h5>
+					</div>
+				    <p class="mb-1">{{custo}}</p><!--Mostrando valor do curso no banco de dados-->
+				  </a>
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Quantidade No Estoque</h5>
+				    </div>
+				    <p class="mb-1">{{estoque}}</p><!--Mostrando o estoque no banco de dados-->
+				    <small class="text-muted">Quantidade Max:{{estoqueMax}}</small><!--Mostrando a quantidade maxima no estoque-->
+				  </a>
+				</div>
+	         
+	        </div>
+	        
+	        <!-- Modal footer -->
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        </div>
+	        
+	      </div>
+	    </div>
+	  </div>
+</body>
+<!--models in functions in angularJS-->
+<script>
+	//Criando module chamado 'exerModule'
+	var app = angular.module('exerModule',[]);
+	//Renderizando pelo controller 'linkController'
+	app.controller('linkController',function($scope,$http){
+		//Função pelo parametro chamando os dados em json com 'conection.php'
+		$http.get("conection.php").then(function(response){
+			//Guardando esse json e transformando em array/scope produtos
+			$scope.produtos = response.data
+		});
+		
+	});
+	//Renderizando diretamente pelo Module da pagina <body>
+	app.run(function($rootScope){
+		//Parametro inicial do scope e chamando a funcao 'FuncMostrar' Quando o usuario usar uma função 'click'
+		$rootScope.FuncMostrar = function($event){
+			//puxando do atributo o json do banco
+			$rootScope.produto   = $(event.target).attr("produto");
+			//pegando do attr custo e colocando no scope custo
+			$rootScope.custo     = $(event.target).attr("custo");
+			//puxando do atributo estoque e colocandp no scope estoque 
+			$rootScope.estoque   = $(event.target).attr("estoque");
+			//puxando do atributo max-estoque e colocandp no scope estoqueMax 
+			$rootScope.estoqueMax   = $(event.target).attr("max-estoque");
+		};
+	});
+</script>
+</html>
