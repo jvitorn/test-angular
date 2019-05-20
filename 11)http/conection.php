@@ -1,6 +1,6 @@
 <?php
 //incluindo dados da conexao em banco de dados
-include_once("con.php");
+include_once("conn.php");
 //coding utf-8
 header('Content-Type: text/html; charset=utf-8');
   trait usuarios {
